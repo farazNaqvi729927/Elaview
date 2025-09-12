@@ -1,0 +1,23 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+
+@layer components {
+  .btn {
+    @apply px-4 py-4 text-center rounded-xl border font-semibold transition-transform duration-300 bg-black text-white;
+  }
+
+  .btn:hover {
+    @apply bg-transparent text-black border-black border shadow-lg scale-105;
+  }
+
+  .btn1 {
+    @apply p-3 text-center rounded  font-semibold transition-transform duration-300 bg-black text-white;
+  }
+
+  .btn1:hover {
+    @apply bg-transparent text-black border-black  shadow-lg cursor-pointer bg-gray-300;
+  }
+}
