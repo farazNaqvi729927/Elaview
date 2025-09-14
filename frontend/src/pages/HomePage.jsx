@@ -74,7 +74,7 @@ export default function Home() {
 
     const fetchProd = async () => {
       try {
-        const res = await api.get("/homeProducts", {
+        const res = await api.get(import.meta.env.VITE_HOME, {
           params: {
             borough: ["SoHo", "Williamsburg", "Astoria"],
           }
