@@ -16,7 +16,7 @@ function Navbar() {
 
     return (
         <div className='flex justify-between items-center p-5 fixed top-0 left-0 w-full z-50 border-b bg-gray-100 shadow-md'>
-            <Link to='/'><img alt="Elaview" className='h-10 w-15' src={logo} /></Link>
+            <Link to='/home'><img alt="Elaview" className='h-10 w-15' src={logo} /></Link>
 
             <div className='space-x-8'>
                 <Link to='/' className='font-sans text-sm font-medium text-gray-700'>Home</Link>
