@@ -102,9 +102,6 @@ function SignUp() {
           {isLoading ? 'Creating Account...' : 'Create Account'}
         </button>
       </form>
-
-
-  
     </div>
   );
 }

@@ -51,7 +51,7 @@ function SignIn() {
 
 
   return (
-    <div className="max-w-[35em] h-auto mx-auto mt-40 bg-white flex flex-col border rounded-xl text-center shadow-xl p-5 mb-5">
+    <div className="max-w-[35em] h-auto mx-auto m-12 bg-white flex flex-col border rounded-xl text-center shadow-xl p-5 mb-5">
       <div className="mt-6">
         <h1 className="bg-gradient-to-r from-purple-300 to-pink-300 bg-clip-text text-transparent text-3xl font-bold">ELAVIEW</h1>
       </div>

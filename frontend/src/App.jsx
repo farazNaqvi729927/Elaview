@@ -12,7 +12,6 @@ function App() {
 
   return (
     <div>
-      <Navbar />
       <ScrollToTop />
       <Routes>
         <Route path='/signup' element={<SignUp />} />

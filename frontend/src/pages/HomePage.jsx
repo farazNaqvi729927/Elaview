@@ -12,6 +12,7 @@ import ts from '../assets/Ts.jpg'
 import { useEffect, useState } from 'react';
 import api from '../lib/axios.js'
 import { Eye, Users } from 'lucide-react';
+import Navbar from './Navbar';
 
 
 
@@ -83,7 +84,7 @@ export default function Home() {
       }
 
       catch (error) {
-         console.log('Error Occurred', error.response?.data || error.message);
+        console.log('Error Occurred', error.response?.data || error.message);
       }
 
     }
@@ -95,6 +96,7 @@ export default function Home() {
 
   return (
     <>
+      <Navbar />
       <div className="bg-fixed bg-cover bg-center gap-0  px-20 py-10 mt-16" style={{ backgroundImage: `url(${homie})` }}>
 
         <div className='grid grid-cols-[2.5fr_1.5fr]'>

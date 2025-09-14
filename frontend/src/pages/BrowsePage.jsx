@@ -12,6 +12,7 @@ import { DropdownMenu, DropdownMenuTrigger, DropdownMenuContent } from "@/compon
 import { MapPin, X, ChevronDown, ChevronUp, MapPinHouse, DollarSign, RulerDimensionLine, TrafficCone, CalendarCheck, ChevronLeft, ChevronRight, Users, Eye } from 'lucide-react';
 import { DropdownMenuItem } from '@radix-ui/react-dropdown-menu';
 import api from '../lib/axios.js'
+import Navbar from './Navbar.jsx';
 
 
 
@@ -303,6 +304,7 @@ function BrowseSpace() {
 
     return (
         <>
+         <Navbar />
             <div className='flex gap-4 p-10'>
 
                 {/*Sidebar */}
