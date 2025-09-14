@@ -27,7 +27,7 @@ function SignUp() {
     }
 
     try {
-      const res = await api.post('/signup', {
+      const res = await api.post(import.meta.env.VITE_SIGNUP, {
         name: formData.name,
         email: formData.email,
         password: formData.password,

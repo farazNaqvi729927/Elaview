@@ -21,7 +21,7 @@ function SignIn() {
     setIsLoading(true);
 
     try {
-      const res = await api.post('/login', {
+      const res = await api.post(import.meta.env.VITE_LOGIN, {
         email: formData.email,
         password: formData.password
       });

@@ -1,7 +1,7 @@
 import { Checkbox, FormControlLabel, ListItem, List, Typography, TextField, IconButton, Stack, Drawer } from '@mui/material';
 import { Collapse, ListSubheader } from '@mui/material';
-import { ExpandLess, ExpandMore, KeyboardArrowDown, KeyboardArrowUp } from '@mui/icons-material';
-import { useState, useMemo, useEffect } from 'react';
+import { ExpandLess, ExpandMore } from '@mui/icons-material';
+import { useState, useEffect } from 'react';
 import { Slider } from '@mui/material';
 import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
 import { AdapterDateFns } from '@mui/x-date-pickers/AdapterDateFns';
@@ -61,7 +61,7 @@ function BrowseSpace() {
 
         const fetchProd = async () => {
             try {
-                const res = await api.get("/browseProducts", {
+                const res = await api.get(import.meta.env.VITE_BROWSE, {
                     params: {
                         page: currentPage,
                         limit: itemsPerPage,
@@ -232,22 +232,6 @@ function BrowseSpace() {
     };
 
 
-    // Filter products based on selected criteria
-    const filteredItems = Product.filter((item) => {
-        const locationMatch = selectedLocations.length === 0 || selectedLocations.includes(item.location);
-        const neighborhoodMatch = selectedNeighborhoods.length === 0 || selectedNeighborhoods.includes(item.borough);
-        const spacetypeMatch = selectedspaceTypes.length === 0 || selectedspaceTypes.includes(item.spaceType);
-        const trafficMatch = selectedTraffic.length === 0 || selectedTraffic.includes(item.traffic);
-        const PriceMatch = priceRange[0] !== undefined && priceRange[1] !== undefined;
-        const WidthMatch = widthRange[0] !== undefined && widthRange[1] !== undefined;
-        const HeightMatch = heightRange[0] !== undefined && heightRange[1] !== undefined;
-        const dateMatch = selectedAvailability.includes('Immediately') ? item.availability === 'Immediately' : true;
-        const calendardateMatch = calendarDate ? new Date(item.availability).getTime() === calendarDate.getTime() : true;
-
-        return locationMatch && neighborhoodMatch && trafficMatch && spacetypeMatch && PriceMatch && WidthMatch && HeightMatch && dateMatch && calendardateMatch;
-    });
-
-
     // Sorting handlers
     const handleSortChange = (option) => {
         setSortOption(option);
@@ -304,7 +288,7 @@ function BrowseSpace() {
 
     return (
         <>
-         <Navbar />
+            <Navbar />
             <div className='flex gap-4 p-10'>
 
                 {/*Sidebar */}
