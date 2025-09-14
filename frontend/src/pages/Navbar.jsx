@@ -34,7 +34,7 @@ function Navbar() {
                     </div>
                     :
                     <div className='flex items-center gap-5'>
-                        <Link to='/signin' className='font-sans text-sm font-medium text-gray-700 border border-gray-400 p-2 rounded'>
+                        <Link to='/' className='font-sans text-sm font-medium text-gray-700 border border-gray-400 p-2 rounded'>
                             SIGN IN
                         </Link>
 
