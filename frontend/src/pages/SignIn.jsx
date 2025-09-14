@@ -19,12 +19,12 @@ function SignIn() {
   const handleLogin = async (event) => {
     event.preventDefault();
     setIsLoading(true);
+    
 
-
-    console.log("VITE_LOGIN:", import.meta.env.VITE_LOGIN);
+    // console.log("VITE_LOGIN:", import.meta.env.VITE_LOGIN);
     try {
 
-      const res = await api.post('/login', {
+      const res = await api.post(import.meta.env.VITE_LOGIN, {
         email: formData.email,
         password: formData.password
       });
