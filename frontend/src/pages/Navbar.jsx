@@ -10,7 +10,7 @@ function Navbar() {
 
     const handleLogout = () => {
         localStorage.removeItem('token');
-        nav('/signin')
+        nav('/')
         toast.success('Successfully Logged Out!')
     }
 
