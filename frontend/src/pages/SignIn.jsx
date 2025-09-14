@@ -19,7 +19,7 @@ function SignIn() {
   const handleLogin = async (event) => {
     event.preventDefault();
     setIsLoading(true);
-    
+
 
     // console.log("VITE_LOGIN:", import.meta.env.VITE_LOGIN);
     try {
@@ -37,12 +37,16 @@ function SignIn() {
         setTimeout(() => {
           toast.success('Successfully Logged In!')
         }, 500);
+      }
+
+      else {
+        toast.error('Invalid Credentials')
 
       }
     }
 
     catch (error) {
-      toast.error('Invalid Credentials')
+      toast.error('Internal Server Error')
     }
 
     finally {
