@@ -1,7 +1,9 @@
 import axios from "axios";
 
+// in production, there's no localhost so we have to make this dynamic
+const BASE_URL = import.meta.env.MODE === "development" ? "http://localhost:5001/auth" : "/auth";
 const api = axios.create({
-  baseURL: import.meta.env.VITE_BASE_URL
+  baseURL: BASE_URL
 });
 
 api.interceptors.request.use(config => {
