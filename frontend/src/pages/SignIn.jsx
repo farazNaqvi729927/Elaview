@@ -29,7 +29,7 @@ function SignIn() {
       // Login successful (HTTP 2xx)
       if (res.data.authToken) {
         localStorage.setItem('token', res.data.authToken);
-        navigate('/');
+        navigate('/home');
 
         setTimeout(() => {
           toast.success('Successfully Logged In!')

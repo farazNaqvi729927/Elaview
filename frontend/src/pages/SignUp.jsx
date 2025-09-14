@@ -35,7 +35,7 @@ function SignUp() {
 
       if (res.data.authToken) {
         localStorage.setItem('token', res.data.authToken);
-        navigate('/');
+        navigate('/home');
 
         setTimeout(() => {
           toast.success('User Signed Up Successfully!')
