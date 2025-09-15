@@ -11,56 +11,8 @@ import p7 from '../assets/p7.jpg'
 import ts from '../assets/Ts.jpg'
 import { useEffect, useState } from 'react';
 import api from '../lib/axios.js'
-import { Eye, Users } from 'lucide-react';
+import { Users } from 'lucide-react';
 import Navbar from './Navbar';
-
-
-
-
-
-
-const SpaceCard = ({ id, title, location, price, size, type, traffic, img, featured }) => {
-
-  return (
-
-    <div style={{ border: '1px solid #D1D5DB' }} className='rounded-xl'>
-
-      <div className='relative'>
-        <img className="rounded-t-xl w-full h-44 object-cover" src={img} alt={title} />
-        <div className=''>
-          {featured && (
-            <span style={{ borderRadius: '0.5rem' }} className="absolute top-1 right-1 bg-white text-[0.7rem] font-bold p-2">
-              Featured
-            </span>
-          )}
-        </div>
-      </div>
-
-      <div className='p-4'>
-
-        <div>
-          <h3 className='text-lg font-bold'>{title}</h3>
-          <p className='text-gray-800 mt-3'>{location}</p>
-        </div>
-
-        <div>
-          <p className='text-md font-bold mt-3'>{price}</p>
-        </div>
-
-        <div>
-          <p className='text-gray-800 mt-3'>Type: {type}</p>
-          <p className='text-gray-800 mt-3'>Size: {size}</p>
-          <p className='text-gray-800 mt-3'>Traffic: {traffic}</p>
-        </div>
-
-        <div className='btn1 mt-2' >
-          <Link to={`/detailsPage/${id}`}>View Details</Link>
-        </div>
-
-      </div>
-    </div>
-  );
-};
 
 
 
@@ -102,9 +54,10 @@ export default function Home() {
         <div className='grid grid-cols-[2.5fr_1.5fr] max-lg:grid-cols-1'>
 
           <div className='bg-gray-300 flex flex-col rounded-l-3xl justify-center items-center max-lg:rounded-3xl p-8 max-lg:justify-center'>
-            <div className='text-5xl font-bold text-center justify-center items-center'>
-              Unlock Hidden <br />Advertising Spaces
-            </div>
+            <p className='text-3xl sm:text-4xl md:text-5xl font-bold text-center justify-center items-center'>
+              Unlock Hidden <br />
+              Advertising Spaces
+            </p>
 
             <p className='text-center mt-5 text-gray-800'>
               Connect landlords with prime advertising real estate <br />
@@ -112,7 +65,7 @@ export default function Home() {
             </p>
 
             <div className='flex justify-center mt-10 gap-3'>
-              <Link className='btn w-56 text-center' to="/browse" >
+              <Link className='btn w-full text-center' to="/browse" >
                 Find Your Ad Space
               </Link>
             </div>
@@ -125,7 +78,7 @@ export default function Home() {
                 <img src={p4} alt="Profile 1" className="w-8 h-8 rounded-full object-cover" />
               </div>
 
-              <span className='text-gray-800'>
+              <span className='text-gray-800 text-center'>
                 Trusted by <strong>500+</strong> property owners
               </span>
 
@@ -133,7 +86,7 @@ export default function Home() {
           </div>
 
 
-          <div className="bg-gray-300 rounded-r-3xl p-8 max-lg:hidden">
+          <div className="bg-gray-300 rounded-r-3xl p-8 max-lg:hidden max-lg:p-8">
             <div className="relative">
               {/* Image */}
               <img src={model} className="rounded-xl object-cover max-lg:hidden" alt="Billboard" />
