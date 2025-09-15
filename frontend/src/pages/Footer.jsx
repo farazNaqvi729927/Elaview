@@ -50,8 +50,6 @@ export default function Footer() {
 
                     {/* Social Links & Tech Stack */}
                     <div className="md:col-span-1">
-
-
                         <div className="text-xs text-gray-500">
                             <p className="mb-1">Built with</p>
                             <div className="flex flex-wrap gap-2">

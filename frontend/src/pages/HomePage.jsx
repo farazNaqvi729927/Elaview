@@ -50,8 +50,8 @@ export default function Home() {
     <>
       <Navbar />
 
-      <div className="bg-fixed bg-cover bg-center gap-0  px-20 py-10 mt-16" style={{ backgroundImage: `url(${homie})` }}>
-        <div className='grid grid-cols-[2.5fr_1.5fr] max-lg:grid-cols-1'>
+      <div className="bg-fixed bg-cover bg-center p-10 mt-16" style={{ backgroundImage: `url(${homie})` }}>
+        <div className='grid grid-cols-[2.5fr_1.5fr] max-lg:grid-cols-1 max-lg:w-[100%]'>
 
           <div className='bg-gray-300 flex flex-col rounded-l-3xl justify-center items-center max-lg:rounded-3xl p-8 max-lg:justify-center'>
             <p className='text-3xl sm:text-4xl md:text-5xl font-bold text-center justify-center items-center'>
@@ -118,14 +118,14 @@ export default function Home() {
           Discover prime advertising locations across the US.
         </p>
 
-        <div className='grid gap-5 mt-5 px-5 [grid-template-columns:repeat(auto-fit,minmax(20rem,1fr))] '>
+        <div className='grid gap-5 mt-5 px-5 [grid-template-columns:repeat(auto-fit,minmax(20rem,1fr))]'>
           {
             Product.map((product) => {
               const currentPrice = product.pricePerWeek;
               const priceLabel = "/week";
 
               return (
-                <div key={product._id} className=" w-[100%] border shadow-md rounded-tl rounded-tr">
+                <div key={product._id} className="w-[100%] border shadow-md rounded-tl rounded-tr">
 
                   <img className='h-[20em] w-[100%] object-cover rounded-tl rounded-tr' src={product.img[0]} alt={product.location}
                     loading="lazy" />
@@ -204,7 +204,7 @@ export default function Home() {
             A simple process to connect property owners with advertisers looking for prime advertising locations.
           </p>
 
-          <div className="flex justify-center gap-10 text-center mt-10">
+          <div className="flex flex-wrap justify-center gap-10 text-center mt-10">
 
             {[
               { icon: "🏢", title: "List Your Space", desc: "Property owners list their available walls, windows, or other spaces with details and pricing." },
@@ -225,12 +225,12 @@ export default function Home() {
 
 
 
-        <section className="px-48">
+        <section className="px-32">
           <h2 className='text-3xl font-bold text-center mt-16'>What Our Users Say</h2>
           <p className='text-gray-800 text-center mt-3'>
             Hear from property owners and advertisers who've transformed their businesses with Elaview.
           </p>
-          <div className="flex justify-center gap-10 text-left mt-10">
+          <div className="grid gap-5 mt-5 px-5 [grid-template-columns:repeat(auto-fit,minmax(20rem,1fr))]">
             {[
               {
                 stars: 5,
@@ -280,7 +280,7 @@ export default function Home() {
 
 
 
-      <div className="flex gap-10 p-12 bg-heroBlue mt-10">
+      <div className="grid px-5 [grid-template-columns:repeat(auto-fit,minmax(20rem,1fr))] gap-10 p-12 bg-heroBlue mt-10">
         <div className='flex flex-col items-center justify-center text-center'>
           <h1 className='text-3xl font-bold text-center text-white'>Ready to Transform Your Advertising Landscape?</h1>
           <p className='text-white'>
@@ -295,8 +295,7 @@ export default function Home() {
           </div>
         </div>
 
-        <div className="">
-
+        <div>
           <div className='relative'>
             <img src={ts} style={{ width: '55em', height: '25em' }} alt="NYC Advertising" className="rounded-xl object-cover" />
 
@@ -307,6 +306,7 @@ export default function Home() {
 
           </div>
         </div>
+      
       </div>
     </>
 
