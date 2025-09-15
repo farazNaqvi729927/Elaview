@@ -9,7 +9,7 @@ import { DatePicker } from '@mui/x-date-pickers/DatePicker';
 import { CalendarToday } from '@mui/icons-material';
 import { useNavigate } from 'react-router-dom';
 import { DropdownMenu, DropdownMenuTrigger, DropdownMenuContent } from "@/components/ui/dropdown-menu"
-import { MapPin, X, ChevronDown, ChevronUp, MapPinHouse, DollarSign, RulerDimensionLine, TrafficCone, CalendarCheck, ChevronLeft, ChevronRight, Users, Eye } from 'lucide-react';
+import { MapPin, X, ChevronDown, ChevronUp, MapPinHouse, DollarSign, RulerDimensionLine, TrafficCone, CalendarCheck, ChevronLeft, ChevronRight, Users, Menu } from 'lucide-react';
 import { DropdownMenuItem } from '@radix-ui/react-dropdown-menu';
 import api from '../lib/axios.js'
 import Navbar from './Navbar.jsx';
@@ -47,12 +47,14 @@ function BrowseSpace() {
     const spaceTypes = ["Wall", "Window", "Queens", "Billboard", "Vehicle", "Storefront", "Rooftop"];
     const traffic = ["5000", "10000", "15000", "20000"]
     const [sortOption, setSortOption] = useState('Recommended');
-    // const [drawerOpen, setDrawerOpen] = useState(false);
+    const [drawerOpen, setDrawerOpen] = useState(false);
     // const [showStatusBar, setShowStatusBar] = useState(true)
     // const [showActivityBar, setShowActivityBar] = useState(false)
     // const [showPanel, setShowPanel] = useState(false)
 
-
+    const toggleDrawer = (open) => () => {
+        setDrawerOpen(open);
+    };
 
 
     let itemsPerPage = 10;
@@ -97,10 +99,6 @@ function BrowseSpace() {
     }, [currentPage, sortOption, selectedLocations, selectedNeighborhoods, selectedspaceTypes, selectedTraffic, priceRange, widthRange, heightRange, calendarDate])
 
 
-    const toggleDrawer = (open) => () => {
-        setDrawerOpen(open);
-    };
-
     // Static filter options
     const locations = [
         "Manhattan",
@@ -126,26 +124,6 @@ function BrowseSpace() {
     const handleViewDetails = (productId) => {
         navigate(`/browse/${productId}`);
     };
-
-
-
-
-
-    // Get current price based on selected option (week/month)
-    // const getCurrentPrice = (product) => {
-    //     return selectedOption === product.pricePerWeek;
-    // };
-
-    // // Get price range based on selected option
-    // const getCurrentPriceRange = () => {
-    //     if (selectedOption === "week") {
-    //         return priceRange;
-    //     } else {
-    //         // Convert week prices to month prices for filtering
-    //         return [Math.round(priceRange[0] * 4.3), Math.round(priceRange[1] * 4.3)];
-    //     }
-    // };
-
 
 
     // Checkbox handlers
@@ -289,10 +267,253 @@ function BrowseSpace() {
     return (
         <>
             <Navbar />
+
             <div className='flex gap-4 p-10'>
 
+                {/*Drawer for smal screens */}
+                <Drawer anchor="left" open={drawerOpen} onClose={toggleDrawer(false)}>
+                    <div role="presentation" onKeyDown={toggleDrawer(false)}>
+
+                        <div className='p-5 self-start max-w-[25rem]'>
+
+                            <div className='flex justify-between  items-center'>
+                                <div className='text-xl font-bold'>Filters</div>
+
+                                <button style={{ borderRadius: '0.3rem', width: '40%' }}
+                                    onClick={reset} className='bg-black text-white p-3 rounded-lg hover:bg-gray-300 hover:text-black'>
+                                    Reset All
+                                </button>
+                            </div>
+
+
+                            {/* Location Filter */}
+                            <div className='border-b border-[rgb(211,210,210)] mt-3'>
+                                <ListSubheader onClick={() => setOpen(!open)} style={{ cursor: 'pointer' }} disableGutters>
+                                    <div className='flex justify-between items-center'>
+                                        <div className='font-500 text-[1.1rem] text-black'>Location</div>
+                                        <div>
+                                            {open ? <ExpandLess /> : <ExpandMore />}
+                                        </div>
+                                    </div>
+                                </ListSubheader>
+                                <Collapse in={open}>
+                                    <List >
+                                        {locations.map((location) => (
+                                            <ListItem key={location} disablePadding>
+                                                <FormControlLabel value={location} checked={selectedLocations.includes(location)}
+                                                    control={<Checkbox onChange={handleCheckboxChang4} />}
+                                                    label={<span style={{ fontSize: 'calc(1rem + 0.1vw)' }} className='text-gray-900'>{location}</span>} />
+                                            </ListItem>
+                                        ))}
+                                    </List>
+                                </Collapse>
+                            </div>
+
+
+                            {/* Neighborhoods Filter */}
+                            <div className='border-b border-[rgb(211,210,210)] mt-3'>
+                                <ListSubheader onClick={() => setOpen1(!open1)} style={{ cursor: 'pointer' }} disableGutters>
+                                    <div className='flex justify-between'>
+                                        <div className='font-500 text-[1.1rem] text-black'>Neighborhoods</div>
+                                        <div>
+                                            {open1 ? <ExpandLess /> : <ExpandMore />}
+                                        </div>
+                                    </div>
+                                </ListSubheader>
+
+                                <Collapse in={open1}>
+                                    <List>
+                                        {neighbourhoods.map((neighbourhood) => (
+                                            <ListItem key={neighbourhood} disablePadding>
+                                                <FormControlLabel value={neighbourhood} checked={selectedNeighborhoods.includes(neighbourhood)}
+                                                    control={<Checkbox onChange={handleCheckboxChange} />}
+                                                    label={<span style={{ fontSize: 'calc(0.9rem + 0.1vw)' }}>{neighbourhood}</span>} />
+                                            </ListItem>
+                                        ))}
+                                    </List>
+                                </Collapse>
+                            </div>
+
+
+                            {/* Space Type Filter */}
+                            <div className='border-b border-[rgb(211,210,210)] mt-3'>
+                                <ListSubheader onClick={() => setOpen2(!open2)} style={{ cursor: 'pointer' }} disableGutters>
+                                    <div className='flex justify-between'>
+                                        <div className='font-500 text-[1.1rem] text-black'>Space Types</div>
+                                        <div> {open2 ? <ExpandLess /> : <ExpandMore />}</div>
+                                    </div>
+                                </ListSubheader>
+
+                                <Collapse in={open2}>
+                                    <List>
+                                        {spaceTypes.map((type) => (
+                                            <ListItem key={type} disablePadding>
+                                                <FormControlLabel value={type} checked={selectedspaceTypes.includes(type)}
+                                                    control={<Checkbox onChange={handleCheckboxChange1} />}
+                                                    label={<span style={{ fontSize: 'calc(0.9rem + 0.1vw)' }}>{type}</span>} />
+                                            </ListItem>
+                                        ))}
+                                    </List>
+                                </Collapse>
+                            </div>
+
+
+                            {/* Traffic Filter */}
+                            <div className='border-b border-[rgb(211,210,210)] mt-3'>
+                                <ListSubheader onClick={() => setOpen3(!open3)} style={{ cursor: 'pointer' }} disableGutters>
+                                    <div className='flex justify-between'>
+                                        <div className='font-500 text-[1.1rem] text-black'>Traffic</div>
+                                        <div>{open3 ? <ExpandLess /> : <ExpandMore />}</div>
+                                    </div>
+                                </ListSubheader>
+
+                                <Collapse in={open3}>
+                                    <List>
+                                        {traffic.map((number) => (
+                                            <ListItem key={number} disablePadding>
+                                                <FormControlLabel value={number} checked={selectedTraffic.includes(number)}
+                                                    control={<Checkbox onChange={handleCheckboxChange2} />}
+                                                    label={<span style={{ fontSize: 'calc(0.9rem + 0.1vw)' }}>{number}+ Daily</span>} />
+                                            </ListItem>
+                                        ))}
+                                    </List>
+                                </Collapse>
+                            </div>
+
+
+
+                            {/* Price Filter */}
+                            <div className='border-b border-[rgb(211,210,210)] mt-3'>
+                                <ListSubheader onClick={() => setOpen6(!open6)} style={{ cursor: 'pointer' }} disableGutters>
+                                    <div className='flex justify-between'>
+                                        <div className='font-500 text-[1.1rem] text-black'>Price Per Week</div>
+                                        <div> {open6 ? <ExpandLess /> : <ExpandMore />}</div>
+                                    </div>
+                                </ListSubheader>
+
+                                <Collapse in={open6} className='p-3' >
+                                    <Slider value={priceRange} onChange={(_, newValue) => setPriceRange(newValue)}
+                                        valueLabelDisplay="off" min={1000} max={15000}
+                                        step={300} style={{ color: 'black', '& .MuiSliderThumb': { backgroundColor: 'black' } }}
+                                    />
+
+                                    <div className='flex justify-between'>
+                                        <span style={{ fontSize: 'calc(1rem + 0.1vw)' }}>${priceRange[0]}</span>
+                                        <span style={{ fontSize: 'calc(1rem + 0.1vw)' }}>${priceRange[1]}</span>
+                                    </div>
+                                </Collapse>
+                            </div>
+
+
+
+                            {/* Size Filter */}
+                            <div className='border-b border-[rgb(211,210,210)] mt-3'>
+                                <ListSubheader onClick={() => setOpen5(!open5)} style={{ cursor: 'pointer' }} disableGutters>
+                                    <div className='flex justify-between'>
+                                        <div className='font-500 text-[1.1rem] text-black'>Size</div>
+                                        <div>{open5 ? <ExpandLess /> : <ExpandMore />}</div>
+                                    </div>
+                                </ListSubheader>
+
+                                <Collapse in={open5}>
+                                    <div className='flex flex-col gap-6 p-2'>
+
+                                        {/* Width Range Slider */}
+                                        <div>
+                                            <Typography className="text-[calc(0.9rem+0.1vw)] text-gray-800 mb-2">
+                                                Width (ft): {widthRange[0]} - {widthRange[1]}
+                                            </Typography>
+                                            <Slider
+                                                value={widthRange}
+                                                onChange={(e, newValue) => setWidthRange(newValue)}
+                                                valueLabelDisplay="auto"
+                                                min={0}
+                                                max={40} // you can set dynamically based on dataset max
+
+                                                sx={{
+                                                    color: "black",             // main color
+                                                    "& .MuiSlider-thumb": {
+                                                        backgroundColor: "black", // thumb
+                                                    },
+                                                    "& .MuiSlider-rail": {
+                                                        backgroundColor: "#d1d1d1", // rail lighter
+                                                    },
+                                                    "& .MuiSlider-track": {
+                                                        backgroundColor: "black", // filled part
+                                                    },
+                                                }}
+                                            />
+                                        </div>
+
+                                        {/* Height Range Slider */}
+                                        <div>
+                                            <Typography className="text-[calc(0.9rem+0.1vw)] text-gray-800 mb-2">
+                                                Height (ft): {heightRange[0]} - {heightRange[1]}
+                                            </Typography>
+                                            <Slider
+                                                value={heightRange}
+                                                onChange={(e, newValue) => setHeightRange(newValue)}
+                                                valueLabelDisplay="auto"
+                                                min={0}
+                                                max={50} // adjust dynamically too
+
+                                                sx={{
+                                                    color: "black",             // main color
+                                                    "& .MuiSlider-thumb": {
+                                                        backgroundColor: "black", // thumb
+                                                    },
+                                                    "& .MuiSlider-rail": {
+                                                        backgroundColor: "#d1d1d1", // rail lighter
+                                                    },
+                                                    "& .MuiSlider-track": {
+                                                        backgroundColor: "black", // filled part
+                                                    },
+                                                }}
+                                            />
+                                        </div>
+
+                                    </div>
+                                </Collapse>
+                            </div>
+
+
+                            {/* Date Filter */}
+                            <div>
+                                <ListSubheader onClick={() => setOpen4(!open4)} style={{ cursor: 'pointer' }} disableGutters>
+                                    <div className='flex justify-between'>
+                                        <div className='font-500 text-[1.1rem] text-black'>Date</div>
+                                        <div>{open4 ? <ExpandLess /> : <ExpandMore />}</div>
+                                    </div>
+                                </ListSubheader>
+
+                                <Collapse in={open4}>
+                                    <div className="mt-3">
+                                        <LocalizationProvider dateAdapter={AdapterDateFns}>
+                                            <DatePicker value={calendarDate} onChange={(newValue) => setcalendarDate(newValue)}
+                                                slots={{ openPickerIcon: CalendarToday }}
+                                                slotProps={{
+                                                    textField: {
+                                                        size: 'small', style: {
+                                                            width: '100%', '& .MuiOutlinedInputRoot': {
+                                                                borderRadius: '4px', '& fieldset': { borderColor: '#d3d2d2', },
+                                                            },
+                                                            '& .MuiInputBaseInput': { py: 0.5, height: 'auto' },
+                                                        },
+                                                    },
+                                                    popper: { style: { zIndex: 9999 } }
+                                                }} />
+                                        </LocalizationProvider>
+                                    </div>
+                                </Collapse>
+                            </div>
+                        </div>
+                    </div>
+                </Drawer>
+
+
+
                 {/*Sidebar */}
-                <div className='mt-20 border p-5 self-start rounded max-w-[25rem]'>
+                <div className='mt-20 border p-5 self-start rounded max-w-[25rem] hidden md:block'>
                     <div className='flex justify-between  items-center'>
                         <div className='text-xl font-bold'>Filters</div>
                         <button style={{ borderRadius: '0.3rem', width: '40%' }}
@@ -529,8 +750,8 @@ function BrowseSpace() {
                 {/*Main Content */}
                 <div className='mt-20 w-full'>
 
-                    <div className='flex items-center' >
-                        {/* <i onClick={toggleDrawer(true)} className="bi bi-list drawer" style={{ zIndex: 1200, padding: 2, fontSize: '24px', cursor: 'pointer' }}></i> */}
+                    <div className='flex items-center gap-2' >
+                        <Menu onClick={toggleDrawer(true)} className="bi bi-list drawer md:hidden" style={{ zIndex: 1200, padding: 2, fontSize: '24px', cursor: 'pointer' }} />
                         <div className='text-3xl font-bold text-gray-900'>Advertising Spaces in NYC</div>
                     </div>
 
@@ -630,7 +851,7 @@ function BrowseSpace() {
 
 
                     {/*Listings Number Shown*/}
-                    <div className="flex justify-between items-center mt-8">
+                    <div className="flex flex-wrap justify-between items-center mt-8 gap-2">
 
                         <div className="text-left text-[calc(1rem+0.2vw)] text-gray-600 font-medium">
                             {Product.length === 0 ? null : (
@@ -639,7 +860,6 @@ function BrowseSpace() {
                                     : `Showing ${Product.length} space matching your criteria`
                             )}
                         </div>
-
 
 
                         {/* Sorting Dropdown */}

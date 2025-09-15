@@ -54,40 +54,43 @@ function SignIn() {
 
 
   return (
-    <div className="max-w-[35em] h-auto mx-auto m-12 bg-white flex flex-col border rounded-xl text-center shadow-xl p-5 mb-5">
-      <div className="mt-6">
-        <h1 className="bg-gradient-to-r from-purple-300 to-pink-300 bg-clip-text text-transparent text-3xl font-bold">ELAVIEW</h1>
+    <div className="min-h-screen flex items-center justify-center bg-gray-100">
+      <div className="w-full max-w-md sm:max-w-lg md:max-w-xl  mx-auto bg-white flex flex-col border rounded-xl text-center shadow-xl p-5 mb-5">
+
+        <div className="mt-6">
+          <h1 className="bg-gradient-to-r from-purple-300 to-pink-300 bg-clip-text text-transparent text-3xl font-bold">ELAVIEW</h1>
+        </div>
+
+        <h2 className="mt-6 text-3xl font-bold text-gray-900">Sign in to your account</h2>
+        <p className="text-gray-500 mt-2">Enter your email and password to continue</p>
+
+        <form onSubmit={handleLogin} className="p-6">
+
+          {/*Email*/}
+          <div className="mt-5 flex flex-col">
+            <label className="text-gray-600 font-semibold" htmlFor="email">Email</label>
+            <input id="email" className="border-2 p-3 rounded mt-2 focus:border-purple-500 focus:outline-none transition-colors duration-300 focus:shadow-lg"
+              type="email" name="email" placeholder="name@example.com" value={formData.email} onChange={handleChange} required disabled={isLoading} />
+          </div>
+
+          {/*Password*/}
+          <div className="mt-5 flex flex-col">
+            <label className="text-gray-600 font-semibold" htmlFor="password">Password</label>
+            <input id="password" className="border-2 p-3 rounded mt-2 focus:border-purple-500 focus:outline-none transition-colors duration-300 focus:shadow-lg"
+              type="password" name="password" placeholder="••••••••" value={formData.password} onChange={handleChange} required disabled={isLoading} />
+          </div>
+
+          {/*Signin Button*/}
+          <button type="submit" className="bg-indigo-400/60 text-gary-800 font-semibold w-full rounded p-3 mt-5" disabled={isLoading}>
+            {isLoading ? 'Signing In...' : 'Sign In'}
+          </button>
+        </form>
+
+        <p className='text-gray-800'>
+          Don't have an account? <Link className="bg-gradient-to-r from-purple-400 to-pink-400 bg-clip-text text-transparent" to="/signup">Signup</Link>
+        </p>
+
       </div>
-
-      <h2 className="mt-6 text-3xl font-bold text-gray-900">Sign in to your account</h2>
-      <p className="text-gray-500 mt-2">Enter your email and password to continue</p>
-
-      <form onSubmit={handleLogin} className="p-6">
-
-        {/*Email*/}
-        <div className="mt-5 flex flex-col">
-          <label className="text-gray-600 font-semibold" htmlFor="email">Email</label>
-          <input id="email" className="border-2 p-3 rounded mt-2 focus:border-purple-500 focus:outline-none transition-colors duration-300 focus:shadow-lg"
-            type="email" name="email" placeholder="name@example.com" value={formData.email} onChange={handleChange} required disabled={isLoading} />
-        </div>
-
-        {/*Password*/}
-        <div className="mt-5 flex flex-col">
-          <label className="text-gray-600 font-semibold" htmlFor="password">Password</label>
-          <input id="password" className="border-2 p-3 rounded mt-2 focus:border-purple-500 focus:outline-none transition-colors duration-300 focus:shadow-lg"
-            type="password" name="password" placeholder="••••••••" value={formData.password} onChange={handleChange} required disabled={isLoading} />
-        </div>
-
-        {/*Signin Button*/}
-        <button type="submit" className="bg-indigo-400/60 text-gary-800 font-semibold w-full rounded p-3 mt-5" disabled={isLoading}>
-          {isLoading ? 'Signing In...' : 'Sign In'}
-        </button>
-      </form>
-
-      <p className='text-gray-800'>
-        Don't have an account? <Link className="bg-gradient-to-r from-purple-400 to-pink-400 bg-clip-text text-transparent" to="/signup">Signup</Link>
-      </p>
-
     </div>
   );
 }
