@@ -7,24 +7,27 @@ import SignUp from './pages/SignUp.jsx';
 import SignIn from './pages/SignIn.jsx';
 import ScrollToTop from './pages/ScrollToTop.js';
 import ProtectedRoutes from './components/ProtectedRoutes.jsx';
+import About from './pages/About.jsx';
 
 function App() {
-
   return (
-    <div>
+    <div className="flex flex-col min-h-screen">
       <ScrollToTop />
-      <Routes>
-        <Route path='/signup' element={<SignUp />} />
-        <Route path='/' element={<SignIn />} />
 
-        <Route path='/home' element={<ProtectedRoutes><HomePage /></ProtectedRoutes>} />
+      <main className="flex-grow">
+        <Routes>
+          <Route path='/signup' element={<SignUp />} />
+          <Route path='/' element={<SignIn />} />
+          <Route path='/about' element={<About />} />
 
-        <Route path='/browse' element={<ProtectedRoutes><BrowsePage /></ProtectedRoutes>} />
+          <Route path='/home' element={<ProtectedRoutes><HomePage /></ProtectedRoutes>} />
+          <Route path='/browse' element={<ProtectedRoutes><BrowsePage /></ProtectedRoutes>} />
+        </Routes>
+      </main>
 
-      </Routes>
       <Footer />
     </div>
-  )
+  );
 }
 
 export default App

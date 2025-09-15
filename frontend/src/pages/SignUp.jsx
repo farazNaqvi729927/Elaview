@@ -57,7 +57,7 @@ function SignUp() {
 
 
   return (
-    <div className="max-w-[35em] h-auto mx-auto mt-40 bg-white flex flex-col border rounded-xl text-center shadow-xl p-5 mb-5">
+    <div className="max-w-[35em] h-auto mx-auto mt-12 bg-white flex flex-col border rounded-xl text-center shadow-xl p-5 mb-5">
       <div className="mt-6">
         <h1 className="bg-gradient-to-r from-purple-300 to-pink-300 bg-clip-text text-transparent text-3xl font-bold">ELAVIEW</h1>
       </div>
@@ -102,6 +102,10 @@ function SignUp() {
           {isLoading ? 'Creating Account...' : 'Create Account'}
         </button>
       </form>
+
+      <p className='text-gray-800'>
+        Already have an account? <Link className="bg-gradient-to-r from-purple-400 to-pink-400 bg-clip-text text-transparent" to="/">Sign in</Link>
+      </p>
     </div>
   );
 }

@@ -86,8 +86,11 @@ function SignIn() {
         <button type="submit" className="bg-indigo-400/60 text-gary-800 font-semibold w-full rounded p-3 mt-5" disabled={isLoading}>
           {isLoading ? 'Signing In...' : 'Sign In'}
         </button>
-
       </form>
+
+      <p className='text-gray-800'>
+        Don't have an account? <Link className="bg-gradient-to-r from-purple-400 to-pink-400 bg-clip-text text-transparent" to="/signup">Signup</Link>
+      </p>
 
     </div>
   );

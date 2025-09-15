@@ -97,14 +97,14 @@ export default function Home() {
   return (
     <>
       <Navbar />
+
       <div className="bg-fixed bg-cover bg-center gap-0  px-20 py-10 mt-16" style={{ backgroundImage: `url(${homie})` }}>
+        <div className='grid grid-cols-[2.5fr_1.5fr] max-lg:grid-cols-1'>
 
-        <div className='grid grid-cols-[2.5fr_1.5fr]'>
-
-          <div className='bg-gray-300 flex flex-col rounded-l-3xl justify-center items-center'>
-            <h1 className='text-5xl font-bold text-center justify-center items-center'>
+          <div className='bg-gray-300 flex flex-col rounded-l-3xl justify-center items-center max-lg:rounded-3xl p-8 max-lg:justify-center'>
+            <div className='text-5xl font-bold text-center justify-center items-center'>
               Unlock Hidden <br />Advertising Spaces
-            </h1>
+            </div>
 
             <p className='text-center mt-5 text-gray-800'>
               Connect landlords with prime advertising real estate <br />
@@ -117,8 +117,7 @@ export default function Home() {
               </Link>
             </div>
 
-            <div className='flex flex-row justify-center mt-10 items-center '>
-
+            <div className='flex flex-row flex-wrap justify-center mt-10 items-center gap-2'>
               <div className='flex flex-row justify-center'>
                 <img src={p1} alt="Profile 1" className="w-8 h-8 rounded-full object-cover" />
                 <img src={p2} alt="Profile 1" className="w-8 h-8 rounded-full object-cover" />
@@ -134,13 +133,13 @@ export default function Home() {
           </div>
 
 
-          <div className="bg-gray-300 rounded-r-3xl p-8">
+          <div className="bg-gray-300 rounded-r-3xl p-8 max-lg:hidden">
             <div className="relative">
               {/* Image */}
-              <img src={model} className="rounded-xl object-cover" alt="Billboard" />
+              <img src={model} className="rounded-xl object-cover max-lg:hidden" alt="Billboard" />
 
               {/* Overlay content */}
-              <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 bg-white/80 p-4 text-center rounded-xl w-[90%]">
+              <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 bg-white/80 p-4 text-center rounded-xl w-[90%] max-lg:hidden">
 
                 <div>
                   <p className="text-xl font-bold text-center">SoHo Wall Space</p>
