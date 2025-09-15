@@ -39,14 +39,10 @@ function SignIn() {
         }, 500);
       }
 
-      else {
-        toast.error('Invalid Credentials')
-
-      }
     }
 
     catch (error) {
-      toast.error('Internal Server Error')
+      toast.error('Invalid Credentials')
     }
 
     finally {
