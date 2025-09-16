@@ -1,4 +1,4 @@
-import { Heart, Code, Github, Linkedin, Twitter } from 'lucide-react';
+import { Heart, Code, Github, Linkedin, Twitter, ExternalLink } from 'lucide-react';
 
 export default function Footer() {
     const currentYear = new Date().getFullYear();
@@ -48,7 +48,56 @@ export default function Footer() {
                         </ul>
                     </div>
 
-                    {/* Social Links & Tech Stack */}
+
+                    {/*Links */}
+                    <div className="space-y-3">
+                        <h4 className="text-sm font-medium text-gray-300 uppercase tracking-wider">
+                            Connect
+                        </h4>
+
+                        <div className="space-y-3">
+                            <a
+                                href="https://github.com/farazNaqvi729927"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="flex items-center space-x-3 p-3 rounded-xl bg-white/5 hover:bg-white/10 border border-white/10 hover:border-white/20 transition-all duration-300 group"
+                                aria-label="Visit GitHub profile"
+                            >
+                                <div className="p-2 bg-white/10 rounded-lg group-hover:bg-white/20 transition-colors">
+                                    <Github className="w-4 h-4 text-gray-400 group-hover:text-white transition-colors" />
+                                </div>
+                                <div className="flex-1">
+                                    <span className="text-sm font-medium text-gray-300 group-hover:text-white transition-colors">
+                                        GitHub
+                                    </span>
+                                    <p className="text-xs text-gray-500">View my repositories</p>
+                                </div>
+                                <ExternalLink className="w-3 h-3 text-gray-500 group-hover:text-gray-300 transition-colors" />
+                            </a>
+
+                            <a
+                                href="https://www.linkedin.com/in/faraz-naqvi-a4731b274/"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="flex items-center space-x-3 p-3 rounded-xl bg-white/5 hover:bg-white/10 border border-white/10 hover:border-white/20 transition-all duration-300 group"
+                                aria-label="Visit LinkedIn profile"
+                            >
+                                <div className="p-2 bg-blue-500/20 rounded-lg group-hover:bg-blue-500/30 transition-colors">
+                                    <Linkedin className="w-4 h-4 text-blue-400 group-hover:text-blue-300 transition-colors" />
+                                </div>
+                                <div className="flex-1">
+                                    <span className="text-sm font-medium text-gray-300 group-hover:text-white transition-colors">
+                                        LinkedIn
+                                    </span>
+                                    <p className="text-xs text-gray-500">Professional network</p>
+                                </div>
+                                <ExternalLink className="w-3 h-3 text-gray-500 group-hover:text-gray-300 transition-colors" />
+                            </a>
+                        </div>
+                    </div>
+
+
+                      {/* Social Links & Tech Stack */}
                     <div className="md:col-span-1">
                         <div className="text-xs text-gray-500">
                             <p className="mb-1">Built with</p>
@@ -78,6 +127,8 @@ export default function Footer() {
                     </div>
                 </div>
             </div>
+
+
         </footer>
     );
 }

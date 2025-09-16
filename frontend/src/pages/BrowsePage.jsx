@@ -752,7 +752,7 @@ function BrowseSpace() {
 
                     <div className='flex items-center gap-2' >
                         <Menu onClick={toggleDrawer(true)} className="bi bi-list drawer md:hidden" style={{ zIndex: 1200, padding: 2, fontSize: '24px', cursor: 'pointer' }} />
-                        <div className='text-3xl font-bold text-gray-900'>Advertising Spaces in NYC</div>
+                        <div className='text-2xl sm:text-3xl md:text-4xl font-bold text-gray-900'>Advertising Spaces in NYC</div>
                     </div>
 
 
