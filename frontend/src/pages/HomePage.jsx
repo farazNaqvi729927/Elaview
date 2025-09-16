@@ -196,7 +196,7 @@ export default function Home() {
 
       <div>
 
-        <section className="px-32">
+        <section className="px-10">
 
           <h2 className='text-3xl font-bold text-center mt-16'>How Elaview Works</h2>
 
@@ -225,12 +225,12 @@ export default function Home() {
 
 
 
-        <section className="px-32">
+        <section className="px-10">
           <h2 className='text-3xl font-bold text-center mt-16'>What Our Users Say</h2>
           <p className='text-gray-800 text-center mt-3'>
             Hear from property owners and advertisers who've transformed their businesses with Elaview.
           </p>
-          <div className="grid gap-5 mt-5 px-5 [grid-template-columns:repeat(auto-fit,minmax(20rem,1fr))]">
+          <div className="grid gap-5 mt-5 px-5 [grid-template-columns:repeat(auto-fit,minmax(20rem,1fr))] justify-center">
             {[
               {
                 stars: 5,
