@@ -57,7 +57,7 @@ export default function Footer() {
 
                         <div className="space-y-3">
                             <a
-                                href="https://github.com/farazNaqvi729927"
+                                href="https://github.com/farazNaqvi729927/Elaview"
                                 target="_blank"
                                 rel="noopener noreferrer"
                                 className="flex items-center space-x-3 p-3 rounded-xl bg-white/5 hover:bg-white/10 border border-white/10 hover:border-white/20 transition-all duration-300 group"
@@ -96,8 +96,7 @@ export default function Footer() {
                         </div>
                     </div>
 
-
-                      {/* Social Links & Tech Stack */}
+                    {/* Social Links & Tech Stack */}
                     <div className="md:col-span-1">
                         <div className="text-xs text-gray-500">
                             <p className="mb-1">Built with</p>
