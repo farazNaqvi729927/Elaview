@@ -1,4 +1,4 @@
-import { Checkbox, FormControlLabel, ListItem, List, Typography, TextField, IconButton, Stack, Drawer } from '@mui/material';
+import { Checkbox, FormControlLabel, ListItem, List, Typography, Drawer } from '@mui/material';
 import { Collapse, ListSubheader } from '@mui/material';
 import { ExpandLess, ExpandMore } from '@mui/icons-material';
 import { useState, useEffect } from 'react';
@@ -751,8 +751,8 @@ function BrowseSpace() {
                 <div className='mt-20 w-full'>
 
                     <div className='flex items-center gap-2' >
-                        <Menu onClick={toggleDrawer(true)} className="bi bi-list drawer md:hidden" style={{ zIndex: 1200, padding: 2, fontSize: '24px', cursor: 'pointer' }} />
-                        <div className='text-2xl sm:text-3xl md:text-4xl font-bold text-gray-900'>Advertising Spaces in NYC</div>
+                        <Menu size={25} onClick={toggleDrawer(true)} className="md:hidden z-[1200] p-[2px] text-2xl cursor-pointer" />
+                        <div className='text-2xl sm:text-2xl md:text-4xl font-bold text-gray-900'>Advertising Spaces in NYC</div>
                     </div>
 
 
